@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unix Timestamp Converter</title>
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+    <div class="container" data-testid="converter-container">
+      <h1>🕐 Unix Timestamp Converter</h1>
+      <p class="subtitle">Convert between date strings and Unix timestamps</p>
+
+      <!-- Unified Converter -->
+      <div class="converter-section" data-testid="converter-section">
+        <h2>🔄 Smart Converter</h2>
+        <label for="inputField">Enter Date String or Unix Timestamp:</label>
+        <input
+          type="text"
+          id="inputField"
+          placeholder="2024-12-25 14:30:00 or 1703512200"
+          data-testid="input-field"
+        />
+        <p class="example">Examples: "2024-12-25 14:30:00" or "1703512200"</p>
+        <button onclick="convert()" data-testid="convert-button">
+          Convert
+        </button>
+        <div class="loading" id="loading" data-testid="loading">
+          Converting...
+        </div>
+        <div class="result" id="result" data-testid="result">
+          <div class="result-label" id="resultLabel">Result:</div>
+          <div
+            class="result-value"
+            id="resultValue"
+            data-testid="result-value"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Footer Note -->
+      <footer class="footer-note" data-testid="timezone-note">
+        <p>
+          📍 <strong>Note:</strong> This converter uses Coordinated Universal
+          Time (UTC). Times displayed as returned directly from the API.
+        </p>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/scripts/main.js"></script>
+  </body>
+</html>

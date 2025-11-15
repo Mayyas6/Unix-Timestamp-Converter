@@ -1,0 +1,91 @@
+# Unix Timestamp Converter
+
+This project offers a simple UI for converting between Unix Timestamps and Date & Time Strings
+
+## 🔗 API Reference
+
+This project consumes the **Unix Timestamp Converter API**:
+
+- **API URL**: https://helloacm.com/api/unix-timestamp-converter/
+- **Documentation**: https://helloacm.com/tools/unix-timestamp-converter/
+
+The API supports converting:
+
+- Unix timestamps to date strings (format: `Y-m-d H:i:s`)
+- Date strings to Unix timestamps
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v22 or higher)
+- npm or yarn
+- playwright installed
+
+### Installation
+
+1. Clone the repository:
+
+```
+git clone https://github.com/yourusername/timestamp-api-tests.git
+cd timestamp-api-tests
+```
+
+2. Install dependencies:
+
+```
+npm install
+```
+
+## 🏃 Running the Application
+
+### Start development server:
+
+```
+npm run dev
+```
+
+The application will be available at `http://localhost:5173` (or the port specified by Vite).
+
+## 🧑‍💻 Running Tests
+
+### Run all tests:
+
+```
+npm test
+```
+
+or
+
+```
+npm run test
+```
+
+### Run tests in UI mode (interactive):
+
+`npm run test:ui`
+
+This opens the Playwright UI for interactive test execution and debugging.
+
+### Run tests with headed browser (visible):
+
+`npm run test:headed`
+
+Watch the tests run in a visible browser window.
+
+### Debug tests:
+
+`npm run test:debug`
+
+Opens Playwright Inspector for step-by-step debugging.
+
+### Run specific test file:
+
+`npx playwright test tests/api/converter-api.spec.ts`
+
+Runs tests only in the specified test file
+
+### View test report:
+
+After you run the tests Playwright serves the results as an HTML report that you can view in the browser, if you need to serve it again try:
+`npx playwright show-report`

@@ -76,7 +76,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run UI tests
-        run: npm run test:ui
+        run: npm run test:fe
 
       - uses: actions/upload-artifact@v4
         if: failure()

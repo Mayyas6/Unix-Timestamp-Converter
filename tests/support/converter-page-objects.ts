@@ -2,27 +2,26 @@ import { Page, Locator } from '@playwright/test';
 
 export class ConverterPage {
   readonly page: Page;
-  readonly dateInput: Locator;
-  readonly timestampInput: Locator;
-  readonly convertDateButton: Locator;
-  readonly convertTimestampButton: Locator;
-  readonly dateResult: Locator;
-  readonly timestampResult: Locator;
-  readonly dateLoading: Locator;
-  readonly timestampLoading: Locator;
+  readonly inputField: Locator;
+  readonly convertButton: Locator;
+  readonly resultLabel: Locator;
+  readonly resultValue: Locator;
+  readonly result: Locator;
+  readonly loading: Locator;
   readonly timezoneNote: Locator;
 
   constructor(page: Page) {
     this.page = page;
 
-    this.dateInput = page.getByTestId('date-input');
-    this.timestampInput = page.getByTestId('timestamp-input');
-    this.convertDateButton = page.getByTestId('convert-date-button');
-    this.convertTimestampButton = page.getByTestId('convert-timestamp-button');
-    this.dateResult = page.getByTestId('date-result-value');
-    this.timestampResult = page.getByTestId('timestamp-result-value');
-    this.dateLoading = page.getByTestId('date-loading');
-    this.timestampLoading = page.getByTestId('timestamp-loading');
+    this.inputField = page.getByTestId('input-field');
+    this.convertButton = page.getByTestId('convert-button');
+
+    this.result = page.getByTestId('result');
+    this.resultLabel = page.locator('#resultLabel');
+    this.resultValue = page.getByTestId('result-value');
+
+    this.loading = page.getByTestId('loading');
+
     this.timezoneNote = page.getByTestId('timezone-note');
   }
 
@@ -30,24 +29,35 @@ export class ConverterPage {
     await this.page.goto('/');
   }
 
-  async convertDateToTimestamp(dateString: string): Promise<string> {
-    await this.dateInput.fill(dateString);
-    await this.convertDateButton.click();
-    await this.dateResult.waitFor({ state: 'visible' });
-    return (await this.dateResult.textContent()) || '';
+  async convert(input: string): Promise<string> {
+    await this.inputField.fill(input);
+    await this.convertButton.click();
+    await this.resultValue.waitFor({ state: 'visible' });
+    return (await this.resultValue.textContent()) || '';
   }
 
-  async convertTimestampToDate(timestamp: string): Promise<string> {
-    await this.timestampInput.fill(timestamp);
-    await this.convertTimestampButton.click();
-    await this.timestampResult.waitFor({ state: 'visible' });
-    return (await this.timestampResult.textContent()) || '';
+  async getResultLabel(): Promise<string> {
+    return (await this.resultLabel.textContent()) || '';
   }
 
-  async isLoadingVisible(
-    type: 'date' | 'timestamp' = 'date'
-  ): Promise<boolean> {
-    const loading = type === 'date' ? this.dateLoading : this.timestampLoading;
-    return await loading.isVisible();
+  async getResultValue(): Promise<string> {
+    return (await this.resultValue.textContent()) || '';
+  }
+
+  async isLoadingVisible(): Promise<boolean> {
+    return await this.loading.isVisible();
+  }
+
+  async hasError(): Promise<boolean> {
+    const classList = await this.result.getAttribute('class');
+    return classList?.includes('error') || false;
+  }
+
+  async clearInput(): Promise<void> {
+    await this.inputField.clear();
+  }
+
+  async pressEnter(): Promise<void> {
+    await this.inputField.press('Enter');
   }
 }

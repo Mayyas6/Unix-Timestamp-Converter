@@ -117,3 +117,13 @@ export const happyPathCases = [
     description: 'end of year date to timestamp',
   },
 ];
+
+export const naturalLanguageTests = [
+  { input: 'tomorrow', shouldBeFuture: true, maxDaysAway: 2 },
+  { input: 'yesterday', shouldBeFuture: false, maxDaysAway: 2 },
+  { input: 'next week', shouldBeFuture: true, maxDaysAway: 14 },
+  { input: 'last month', shouldBeFuture: false, maxDaysAway: 62 },
+  { input: 'next year', shouldBeFuture: true, maxDaysAway: 730 },
+  { input: '+3 days', shouldBeFuture: true, maxDaysAway: 4 },
+  { input: '+1 week', shouldBeFuture: true, maxDaysAway: 14 },
+];

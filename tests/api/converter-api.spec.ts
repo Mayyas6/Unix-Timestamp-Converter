@@ -1,5 +1,10 @@
 import { test, expect } from '@playwright/test';
-import { happyPathCases, edgeCases, errorCases } from 'tests/support/testCases';
+import {
+  happyPathCases,
+  edgeCases,
+  errorCases,
+  naturalLanguageTests,
+} from 'tests/support/testCases';
 
 const API_URL = 'https://helloacm.com/api/unix-timestamp-converter/?cached&s=';
 
@@ -8,9 +13,29 @@ test.describe('Common cases validation', () => {
     test(`should convert ${description}`, async ({ request }) => {
       const response = await request.get(API_URL + encodeURIComponent(input));
       expect(response.status()).toBe(200);
-
       const data = JSON.parse(await response.text());
       expect(data).toBe(expected);
+    });
+  });
+
+  naturalLanguageTests.forEach(({ input, shouldBeFuture, maxDaysAway }) => {
+    test(`should convert natural language date: ${input}`, async ({
+      request,
+    }) => {
+      const response = await request.get(API_URL + encodeURIComponent(input));
+      expect(response.status()).toBe(200);
+      const result = parseInt(await response.text());
+      const now = Math.floor(Date.now() / 1000);
+      const maxDiff = maxDaysAway * 86400;
+      expect(result).toBeGreaterThan(0);
+      // Correct direction
+      if (shouldBeFuture) {
+        expect(result).toBeGreaterThan(now);
+        expect(result).toBeLessThan(now + maxDiff);
+      } else {
+        expect(result).toBeLessThan(now);
+        expect(result).toBeGreaterThan(now - maxDiff);
+      }
     });
   });
 });

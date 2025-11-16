@@ -87,5 +87,5 @@ Runs tests only in the specified test file
 
 ### View test report:
 
-After you run the tests Playwright serves the results as an HTML report that you can view in the browser, if you need to serve it again try:
+After you run the tests Playwright serves the results as an HTML report if there is any failed test. if all tests pass and you want to serve it:
 `npx playwright show-report`

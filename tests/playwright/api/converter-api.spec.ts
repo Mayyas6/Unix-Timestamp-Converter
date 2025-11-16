@@ -4,7 +4,7 @@ import {
   edgeCases,
   errorCases,
   naturalLanguageTests,
-} from 'tests/support/testCases';
+} from 'tests/playwright/support/testCases';
 
 const API_URL = 'https://helloacm.com/api/unix-timestamp-converter/?cached&s=';
 

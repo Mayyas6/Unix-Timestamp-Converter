@@ -51,6 +51,8 @@ The application will be available at `http://localhost:5173` (or the port specif
 
 ### Run all tests:
 
+If you run the tests without starting localhost first, localhost will be started automatically to run the tests
+
 ```
 npm test
 ```
@@ -81,7 +83,8 @@ Opens Playwright Inspector for step-by-step debugging.
 
 ### Run specific test file:
 
-`npx playwright test tests/api/converter-api.spec.ts`
+`npx playwright test tests/playwright/api/converter-api.spec.ts`
+`npx playwright test tests/playwright/ui/converter-ui.spec.ts`
 
 Runs tests only in the specified test file
 
@@ -89,3 +92,23 @@ Runs tests only in the specified test file
 
 After you run the tests Playwright serves the results as an HTML report if there is any failed test. if all tests pass and you want to serve it:
 `npx playwright show-report`
+
+# 📈 Performance tests
+
+Lightweight performance tests using k6 to verify API responsiveness without causing excessive load on the third-party API.
+
+### Health check (5 requests, ~15 seconds):
+
+```
+npm run perf:health
+
+```
+
+### Light load test (minimal load, ~40 seconds):
+
+```
+npm run perf:light
+
+```
+
+**Note:** These tests are intentionally lightweight to respect the third-party API. They validate response times and basic availability without causing significant load.

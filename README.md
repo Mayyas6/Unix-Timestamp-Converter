@@ -116,4 +116,4 @@ npm run perf:light
 
 ```
 
-**Note:** These tests are intentionally lightweight to respect the third-party API. They validate response times and basic availability without causing significant load.
+**Note:** These tests are intentionally lightweight to respect the third-party API. They validate response times and basic availability without causing significant load..

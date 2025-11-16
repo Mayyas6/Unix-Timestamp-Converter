@@ -83,8 +83,13 @@ Opens Playwright Inspector for step-by-step debugging.
 
 ### Run specific test file:
 
-`npx playwright test tests/playwright/api/converter-api.spec.ts`
-`npx playwright test tests/playwright/ui/converter-ui.spec.ts`
+```
+npx playwright test tests/playwright/api/converter-api.spec.ts
+```
+
+```
+npx playwright test tests/playwright/ui/converter-ui.spec.ts
+```
 
 Runs tests only in the specified test file
 

@@ -103,7 +103,7 @@ After you run the tests Playwright serves the results as an HTML report if there
 
 ## Tests in CI:
 
-UI tests are running in Github Actions CI on push and pull requests. 
+UI tests are running in Github Actions CI on push and pull requests.
 **NOTE:** API and Performance tests are ignored in CI here on purpose because they will fail due to issues on the API side, and to not overload the API with performance tests on every commit
 
 # 📈 Performance tests

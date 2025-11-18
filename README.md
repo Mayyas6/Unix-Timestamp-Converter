@@ -27,7 +27,7 @@ The API supports converting:
 1. Clone the repository:
 
 ```
-git clone https://github.com/yourusername/timestamp-api-tests.git
+git clone https://github.com/Mayyas6/Unix-Timestamp-Converter.git
 ```
 ```
 cd Unix-Timestamp-Converter

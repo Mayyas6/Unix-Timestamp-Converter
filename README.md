@@ -30,7 +30,7 @@ The API supports converting:
 git clone https://github.com/yourusername/timestamp-api-tests.git
 ```
 ```
-cd timestamp-api-tests
+cd Unix-Timestamp-Converter
 ```
 
 2. Install dependencies:

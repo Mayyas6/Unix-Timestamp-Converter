@@ -92,6 +92,11 @@ export const happyPathCases = [
     description: 'past year timestamp',
   },
   {
+    input: '2016-1-1 2:3:22',
+    expected: 1451613802,
+    description: 'non zero padded timestamp to date',
+  },
+  {
     input: '2024-12-25 14:30:00',
     expected: 1735137000,
     description: 'standard date to timestamp',

@@ -110,6 +110,10 @@ UI tests are running in Github Actions CI on push and pull requests.
 
 Lightweight performance tests using k6 to verify API responsiveness without causing excessive load on the third-party API.
 
+### Prerequisites:
+
+- Install k6: https://k6.io/docs/getting-started/installation/
+
 ### Health check (5 requests, ~15 seconds):
 
 ```

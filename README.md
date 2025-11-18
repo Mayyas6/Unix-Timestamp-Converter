@@ -101,6 +101,11 @@ Runs tests only in the specified test file
 After you run the tests Playwright serves the results as an HTML report if there is any failed test. if all tests pass and you want to serve it:
 `npx playwright show-report`
 
+## Tests in CI:
+
+UI tests are running in Github Actions CI on push and pull requests. 
+**NOTE:** API and Performance tests are ignored in CI here on purpose because they will fail due to issues on the API side, and to not overload the API with performance tests on every commit
+
 # 📈 Performance tests
 
 Lightweight performance tests using k6 to verify API responsiveness without causing excessive load on the third-party API.

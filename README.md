@@ -11,7 +11,7 @@ This project consumes the **Unix Timestamp Converter API**:
 
 The API supports converting:
 
-- Unix timestamps to date strings (format: `Y-m-d H:i:s`)
+- Unix timestamps to date strings (format: `Y-m-d h:i:s`)
 - Date strings to Unix timestamps
 
 ## 🚀 Getting Started
